@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 
 /**
  * @title Stepper overview
@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./easycalc-form.component.css']
 })
 export class EasycalcFormComponent implements OnInit {
-  isLinear = true;
+  isLinear = false;
   SystemInputVolumeFormGroup: FormGroup;
   BilledConsumptionFormGroup: FormGroup;
   UnbilledConsumptionFormGroup: FormGroup;
@@ -18,30 +18,47 @@ export class EasycalcFormComponent implements OnInit {
   InfrastructureFormGroup: FormGroup;
   LevelofServiceFormGroup: FormGroup;
   FinancialsFormGroup: FormGroup;
+  colorControl = new FormControl('primary');
+
+  PhysicalLossesScalerMin =0;
+  PhysicalLossesScalerMax =10;
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.SystemInputVolumeFormGroup = this._formBuilder.group({
-          SystemInputVolumeCtrl: ['', Validators.required]
+          SystemInputVolumeCtrl: ['', Validators.required],
+          SIVAccuracyAssessmentCtrl: ['', Validators.required]
         });
     this.BilledConsumptionFormGroup = this._formBuilder.group({
-          BilledConsumptionCtrl: ['', Validators.required]
+          MeteredBilledConsumptionCtrl: ['', Validators.required],
+          UnmeteredBilledConsumptionCtrl: ['0', Validators.required]
         });
     this.UnbilledConsumptionFormGroup = this._formBuilder.group({
-          UnbilledConsumptionCtrl: ['', Validators.required]
+          MeteredUnbilledConsumptionCtrl: ['', Validators.required],
+          UnmeteredUnbilledConsumptionCtrl: ['', Validators.required]
         });
     this.CommercialLossesFormGroup = this._formBuilder.group({
-          CommercialLossesCtrl: ['', Validators.required]
+          CostumerMeterUnderRegistrationCtrl: ['', Validators.required],
+          IllegalConnectionsCtrl:  ['', Validators.required]
         });
     this.InfrastructureFormGroup = this._formBuilder.group({
-          InfrastructureCtrl: ['', Validators.required]
+          PipelineLengthCtrl: ['', Validators.required],
+          NumerOfAccountsCtrl: ['', Validators.required],
+          NumerOfServiceConnectionsCtrl: ['', Validators.required]
         });
     this.LevelofServiceFormGroup = this._formBuilder.group({
-          LevelofServiceCtrl: ['', Validators.required]
+          PressureSelectCtrl: ['', Validators.required],
+          PressureCtrl: ['', Validators.required],          
+          SupplyTimeSelectCtrl: ['', Validators.required],
+          SupplyTimeCtrl: ['', Validators.required]
         });
     this.FinancialsFormGroup = this._formBuilder.group({
-          FinancialsCtrl: ['', Validators.required]
+          AverageTariffCtrl: ['', Validators.required],
+          VariableProductionAndDistributionCostCtrl: ['', Validators.required],
+          AnnualOperatingCostCtrl: ['', Validators.required],
+          ValueRecoveredPhysicalLossesCtrl: ['', Validators.required],
+          ValueRecoveredPhysicalLossesSliderCtrl: ['', Validators.required]
         });
   }
 }

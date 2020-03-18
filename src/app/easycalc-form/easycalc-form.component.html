@@ -3,24 +3,46 @@
 	<mat-step [stepControl]="SystemInputVolumeFormGroup">
 		<form [formGroup]="SystemInputVolumeFormGroup">
 			<ng-template matStepLabel>System Input Volume</ng-template>
-			<mat-form-field>
-				<mat-label>System Input Volume</mat-label>
-				<input matInput formControlName="SystemInputVolumeCtrl" placeholder="" required>
-        </mat-form-field>
-				<div>
-					<button mat-button matStepperPrevious>Back</button>
-					<button mat-button matStepperNext>Next</button>
-				</div>
+		
+    	<mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label >System Input Volume</mat-label>
+          <input matInput type="number" formControlName="SystemInputVolumeCtrl" required min="0" placeholder="" >
+          <span matSuffix>m³/d</span>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label >SIV Accuracy Assessment</mat-label>
+        <mat-select [(value)]="selected" [formControl]="SIVAccuracyAssessmentCtrl">
+          <mat-option value="X1">inflow meters in good condition</mat-option>
+          <mat-option value="X2">old inflow meters</mat-option>
+          <mat-option value="X3">inflow partially estimated</mat-option>
+          <mat-option value="X4">detailed estimate is available</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
 		</form>
 	</mat-step>
 
 	<mat-step [stepControl]="BilledConsumptionFormGroup">
 		<form [formGroup]="BilledConsumptionFormGroup">
 			<ng-template matStepLabel>Billed Consumption</ng-template>
-			<mat-form-field>
-				<mat-label>Billed Consumption</mat-label>
-				<input matInput formControlName="BilledConsumptionCtrl" placeholder="" required>
-          </mat-form-field>
+
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label >Metered</mat-label>
+          <input matInput type="number" formControlName="MeteredBilledConsumptionCtrl" required min="0" placeholder="" >
+          <span matSuffix>m³/d</span>
+      </mat-form-field>
+
+     <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label >Unmetered</mat-label>
+          <input matInput type="number" formControlName="UnmeteredBilledConsumptionCtrl" required min="0" placeholder="" >
+          <span matSuffix>m³/d</span>
+      </mat-form-field>
+
 				<div>
 					<button mat-button matStepperPrevious>Back</button>
 					<button mat-button matStepperNext>Next</button>
@@ -31,10 +53,21 @@
 	<mat-step [stepControl]="UnbilledConsumptionFormGroup">
 		<form [formGroup]="UnbilledConsumptionFormGroup">
 			<ng-template matStepLabel>Unbilled Consumption</ng-template>
-			<mat-form-field>
-				<mat-label>Unbilled Consumption</mat-label>
-				<input matInput formControlName="UnbilledConsumptionCtrl" placeholder="" required>
-        </mat-form-field>
+
+
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label >Metered</mat-label>
+          <input matInput type="number" formControlName="MeteredUnbilledConsumptionCtrl" required min="0" placeholder="" >
+          <span matSuffix>m³/d</span>
+      </mat-form-field>
+
+     <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label >Unmetered</mat-label>
+          <input matInput type="number" formControlName="UnmeteredUnbilledConsumptionCtrl" required min="0" placeholder="" >
+          <span matSuffix>m³/d</span>
+      </mat-form-field>
+
+		
 				<div>
 					<button mat-button matStepperPrevious>Back</button>
 					<button mat-button matStepperNext>Next</button>
@@ -45,10 +78,22 @@
 	<mat-step [stepControl]="CommercialLossesFormGroup">
 		<form [formGroup]="CommercialLossesFormGroup">
 			<ng-template matStepLabel>Commercial Losses</ng-template>
-			<mat-form-field>
-				<mat-label>Commercial Losses</mat-label>
-				<input matInput formControlName="CommercialLossesCtrl" placeholder="" required>
-        </mat-form-field>
+			
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label position="floating">Costumer Meter Under-Registration (m³/d)</mat-label>
+          <input matInput type="number" formControlName="CostumerMeterUnderRegistrationCtrl" required min="0" placeholder="" >
+          <span matSuffix>m³/d</span>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label >Illegal Connections</mat-label>
+        <mat-select [(value)]="selected" [formControl]="IllegalConnectionsCtrl">
+          <mat-option value="X1">no problem</mat-option>
+          <mat-option value="X2">moderate problem (1-5%)</mat-option>
+          <mat-option value="X2">significant problem (>5%)</mat-option>
+        </mat-select>
+      </mat-form-field>
+
 				<div>
 					<button mat-button matStepperPrevious>Back</button>
 					<button mat-button matStepperNext>Next</button>
@@ -59,10 +104,25 @@
 	<mat-step [stepControl]="InfrastructureFormGroup">
 		<form [formGroup]="InfrastructureFormGroup">
 			<ng-template matStepLabel>Infrastructure</ng-template>
-			<mat-form-field>
-				<mat-label>Infrastructure</mat-label>
-				<input matInput formControlName="InfrastructureCtrl" placeholder="" required>
+
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+            <mat-label >Pipeline Length</mat-label>
+            <input matInput type="number" formControlName="PipelineLengthCtrl" required min="0" placeholder="" >
+            <span matSuffix>km</span>
         </mat-form-field>
+
+        <mat-form-field appearance="fill" [color]="colorControl.value">
+            <mat-label >Numer of Accounts (Customers</mat-label>
+            <input matInput type="number" formControlName="NumerOfAccountsCtrl" required min="0" placeholder="" >
+            <span matSuffix>#</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" [color]="colorControl.value">
+            <mat-label >Numer of Service Connections</mat-label>
+            <input matInput type="number" formControlName="NumerOfServiceConnectionsCtrl" required min="0" placeholder="" >
+            <span matSuffix>#</span>
+        </mat-form-field>
+
 				<div>
 					<button mat-button matStepperPrevious>Back</button>
 					<button mat-button matStepperNext>Next</button>
@@ -73,10 +133,43 @@
 	<mat-step [stepControl]="LevelofServiceFormGroup">
 		<form [formGroup]="LevelofServiceFormGroup">
 			<ng-template matStepLabel>Level of Service</ng-template>
-			<mat-form-field>
-				<mat-label>Level of Service</mat-label>
-				<input matInput formControlName="LevelofServiceCtrl" placeholder="" required>
-        </mat-form-field>
+      
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+        <mat-label >Pressure</mat-label>
+        <mat-select [(value)]="selected" [formControl]="PressureSelectCtrl">
+            <mat-option value="X1">pressure is very low</mat-option>
+            <mat-option value="X2">in some parts the pressure is too low</mat-option>
+            <mat-option value="X3">pressure is reasonable</mat-option>
+            <mat-option value="X4">high pressure</mat-option>
+            <mat-option value="X4">the average pressure based on measurement is</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label position="floating">Measured Average Pressure</mat-label>
+          <input matInput type="number" formControlName="PressureCtrl" required min="0" placeholder="" >
+          <span matSuffix>m head</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+        <mat-label >Supply Time</mat-label>
+        <mat-select [(value)]="selected" [formControl]="SupplyTimeSelectCtrl">
+            <mat-option value="X1">24 h/d</mat-option>
+            <mat-option value="X2">1-3 h/d</mat-option>
+            <mat-option value="X3">3-6 h/d</mat-option>
+            <mat-option value="X4">6-12 h/d</mat-option>
+            <mat-option value="X5">12-18 h/d</mat-option>
+            <mat-option value="X6">18-24 h/d</mat-option>
+            <mat-option value="X7">average is known</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label position="floating">Average Suppy Time</mat-label>
+          <input matInput type="number" formControlName="SupplyTimeCtrl" required min="0" placeholder="" >
+          <span matSuffix>h/d</span>
+      </mat-form-field>
+
 				<div>
 					<button mat-button matStepperPrevious>Back</button>
 					<button mat-button matStepperNext>Next</button>
@@ -87,10 +180,44 @@
 	<mat-step [stepControl]="FinancialsFormGroup">
 		<form [formGroup]="FinancialsFormGroup">
 			<ng-template matStepLabel>Financials</ng-template>
-			<mat-form-field>
-				<mat-label>Financials</mat-label>
-				<input matInput formControlName="FinancialsCtrl" placeholder="" required>
-        </mat-form-field>
+			
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label position="floating">Average Tariff</mat-label>
+          <input matInput type="number" formControlName="AverageTariffCtrl" required min="0" placeholder="" >
+          <span matSuffix>USD/m³</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label position="floating">Variable Production and Distribution Cost</mat-label>
+          <input matInput type="number" formControlName="VariableProductionAndDistributionCostCtrl" required min="0" placeholder="" >
+          <span matSuffix>USD/m³</span>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label position="floating">Annual Operating Cost</mat-label>
+          <input matInput type="number" formControlName="AnnualOperatingCostCtrl" required min="0" placeholder="" >
+          <span matSuffix>USD/m³</span>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill" [color]="colorControl.value">
+          <mat-label position="floating">How shall recovered physical losses be valued?</mat-label>
+          <input matInput type="number" formControlName="ValueRecoveredPhysicalLossesCtrl" required >
+          <span matSuffix>USD/m³</span>
+      </mat-form-field>
+
+      <mat-slider formControlName="ValueRecoveredPhysicalLossesSliderCtrl"
+        position="floating"
+           [max]="PhysicalLossesScalerMax"
+            [min]="PhysicalLossesScalerMin"
+            [step]="1"
+            [(ngModel)]="value"
+            [vertical]="vertical">
+      </mat-slider>
+
+      <!-- Currently two "slider" are existing. TODO: find out how to implement the mat-slider in a mat-form-field or create something that behaves similar
+      -->
+
 				<div>
 					<button mat-button matStepperPrevious>Back</button>
 					<button mat-button matStepperNext>Next</button>
@@ -100,14 +227,13 @@
 
 	<mat-step>
 		<ng-template matStepLabel>Results</ng-template>
-		<p>You are now done.</p>
+		<p>TODO: show results</p>
 		<div>
 			<button mat-button matStepperPrevious>Back</button>
 			<button mat-button (click)="stepper.reset()">Reset</button>
 		</div>
 	</mat-step>
 </mat-vertical-stepper>
-
 
 <!-- Copyright 2019 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
