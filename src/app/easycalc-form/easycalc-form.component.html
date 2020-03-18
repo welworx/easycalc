@@ -1,42 +1,112 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+
+	<mat-step [stepControl]="SystemInputVolumeFormGroup">
+		<form [formGroup]="SystemInputVolumeFormGroup">
+			<ng-template matStepLabel>System Input Volume</ng-template>
+			<mat-form-field>
+				<mat-label>System Input Volume</mat-label>
+				<input matInput formControlName="SystemInputVolumeCtrl" placeholder="" required>
+        </mat-form-field>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button matStepperNext>Next</button>
+				</div>
+		</form>
+	</mat-step>
+
+	<mat-step [stepControl]="BilledConsumptionFormGroup">
+		<form [formGroup]="BilledConsumptionFormGroup">
+			<ng-template matStepLabel>Billed Consumption</ng-template>
+			<mat-form-field>
+				<mat-label>Billed Consumption</mat-label>
+				<input matInput formControlName="BilledConsumptionCtrl" placeholder="" required>
+          </mat-form-field>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button matStepperNext>Next</button>
+				</div>
+		</form>
+	</mat-step>
+
+	<mat-step [stepControl]="UnbilledConsumptionFormGroup">
+		<form [formGroup]="UnbilledConsumptionFormGroup">
+			<ng-template matStepLabel>Unbilled Consumption</ng-template>
+			<mat-form-field>
+				<mat-label>Unbilled Consumption</mat-label>
+				<input matInput formControlName="UnbilledConsumptionCtrl" placeholder="" required>
+        </mat-form-field>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button matStepperNext>Next</button>
+				</div>
+		</form>
+	</mat-step>
+
+	<mat-step [stepControl]="CommercialLossesFormGroup">
+		<form [formGroup]="CommercialLossesFormGroup">
+			<ng-template matStepLabel>Commercial Losses</ng-template>
+			<mat-form-field>
+				<mat-label>Commercial Losses</mat-label>
+				<input matInput formControlName="CommercialLossesCtrl" placeholder="" required>
+        </mat-form-field>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button matStepperNext>Next</button>
+				</div>
+		</form>
+	</mat-step>
+
+	<mat-step [stepControl]="InfrastructureFormGroup">
+		<form [formGroup]="InfrastructureFormGroup">
+			<ng-template matStepLabel>Infrastructure</ng-template>
+			<mat-form-field>
+				<mat-label>Infrastructure</mat-label>
+				<input matInput formControlName="InfrastructureCtrl" placeholder="" required>
+        </mat-form-field>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button matStepperNext>Next</button>
+				</div>
+		</form>
+	</mat-step>
+
+	<mat-step [stepControl]="LevelofServiceFormGroup">
+		<form [formGroup]="LevelofServiceFormGroup">
+			<ng-template matStepLabel>Level of Service</ng-template>
+			<mat-form-field>
+				<mat-label>Level of Service</mat-label>
+				<input matInput formControlName="LevelofServiceCtrl" placeholder="" required>
+        </mat-form-field>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button matStepperNext>Next</button>
+				</div>
+		</form>
+	</mat-step>
+
+	<mat-step [stepControl]="FinancialsFormGroup">
+		<form [formGroup]="FinancialsFormGroup">
+			<ng-template matStepLabel>Financials</ng-template>
+			<mat-form-field>
+				<mat-label>Financials</mat-label>
+				<input matInput formControlName="FinancialsCtrl" placeholder="" required>
+        </mat-form-field>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button matStepperNext>Next</button>
+				</div>
+		</form>
+	</mat-step>
+
+	<mat-step>
+		<ng-template matStepLabel>Results</ng-template>
+		<p>You are now done.</p>
+		<div>
+			<button mat-button matStepperPrevious>Back</button>
+			<button mat-button (click)="stepper.reset()">Reset</button>
+		</div>
+	</mat-step>
+</mat-vertical-stepper>
 
 
 <!-- Copyright 2019 Google LLC. All Rights Reserved.

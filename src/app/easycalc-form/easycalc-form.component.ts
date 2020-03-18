@@ -10,19 +10,39 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./easycalc-form.component.css']
 })
 export class EasycalcFormComponent implements OnInit {
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  isLinear = true;
+  SystemInputVolumeFormGroup: FormGroup;
+  BilledConsumptionFormGroup: FormGroup;
+  UnbilledConsumptionFormGroup: FormGroup;
+  CommercialLossesFormGroup: FormGroup;
+  InfrastructureFormGroup: FormGroup;
+  LevelofServiceFormGroup: FormGroup;
+  FinancialsFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+    this.SystemInputVolumeFormGroup = this._formBuilder.group({
+          SystemInputVolumeCtrl: ['', Validators.required]
+        });
+    this.BilledConsumptionFormGroup = this._formBuilder.group({
+          BilledConsumptionCtrl: ['', Validators.required]
+        });
+    this.UnbilledConsumptionFormGroup = this._formBuilder.group({
+          UnbilledConsumptionCtrl: ['', Validators.required]
+        });
+    this.CommercialLossesFormGroup = this._formBuilder.group({
+          CommercialLossesCtrl: ['', Validators.required]
+        });
+    this.InfrastructureFormGroup = this._formBuilder.group({
+          InfrastructureCtrl: ['', Validators.required]
+        });
+    this.LevelofServiceFormGroup = this._formBuilder.group({
+          LevelofServiceCtrl: ['', Validators.required]
+        });
+    this.FinancialsFormGroup = this._formBuilder.group({
+          FinancialsCtrl: ['', Validators.required]
+        });
   }
 }
 
