@@ -20,8 +20,25 @@ Use docker to get a full cordova environment to compile the Angular softwar with
 4. create empty cordova app
 
 ``
+npm install -g @angular/cli
+npm install -g typescript
+npm install -g cordova
+npm update --all
+
+npm uninstall @angular-devkit/build-angular
+npm install @angular-devkit/build-angular
+
+npm install -g npm 
+npm install -g @angular-devkit/build-angular
+ng update --all
+
 cordova create wb-easycalc cc.liemberger.easycalc EasyCalc
+cd wb-easycalc
 cordova platform add android
+ng build --prod --aot 
+cordova build android
+
+
 ``
 
 5. merge files properly (see https://liechtenecker.at/blog/angular-zu-android-apk-in-10-schritten/)
